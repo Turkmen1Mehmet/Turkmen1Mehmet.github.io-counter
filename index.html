@@ -150,13 +150,24 @@
     }
 
     $(document).ready(function () {
+      // Initialize counter values and text inputs from localStorage
       for (let i = 1; i <= 10; i++) {
-        let storedValue = localStorage.getItem('trend' + i);
-        if (storedValue !== null) {
-          $('#trend' + i).val(storedValue);
+        let counterValue = localStorage.getItem('trend' + i);
+        let textValue = localStorage.getItem('trendadi' + i);
+
+        if (counterValue) {
+            $('#trend' + i).val(counterValue);
         }
+        
+        $('#trendadi' + i).val(textValue ? textValue : 'TREND&KUMAŞ');
       }
-    });
+
+      $('input[type="text"]').change(function () {
+          let id = $(this).attr('id');
+          let value = $(this).val();
+          localStorage.setItem(id, value);
+      });
+
 
     function increasetrend(id) {
       let element = $('#' + id);
@@ -177,6 +188,21 @@
       $('#' + id).val('0');
       localStorage.setItem(id, '0');
     }
+
+    // Bind buttons to functions
+      $("[id^='counter']").each(function() {
+        var id = $(this).find('.input-number').attr('id').replace('trend', '');
+        $(this).find("[onclick^='increasetrend']").click(function() {
+          increasetrend('trend' + id);
+        });
+        $(this).find("[onclick^='decreasetrend']").click(function() {
+          decreasetrend('trend' + id);
+        });
+        $(this).find("[onclick^='clearResulttrend']").click(function() {
+          clearResulttrend('trend' + id);
+        });
+      });
+    });
   </script>
 </body>
 </html>

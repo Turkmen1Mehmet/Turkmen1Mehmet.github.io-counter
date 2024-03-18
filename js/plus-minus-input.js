@@ -1,4 +1,4 @@
-$(document).ready(function ($) {
+$(document).ready(function (_jquery) {
 
     // Sayfa yüklendiğinde localStorage'dan verileri yükleyin
     for (let i = 1; i <= 10; i++) {

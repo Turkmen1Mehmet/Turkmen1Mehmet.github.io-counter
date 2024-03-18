@@ -69,25 +69,23 @@ function saveValue(id) {
     localStorage.setItem(id, value);
 }
 
-function increasetrend(number) {
-    let elementId = "trend" + number;
-    let element = $('#' + elementId);
-    element.val(parseInt(element.val()) + 1);
-    saveValue(elementId);
+function increasetrend(id) {
+    let element = $('#' + id);
+    element.val(parseInt(element.val(), 10) + 1);
+    localStorage.setItem(id, element.val());
 }
 
-function decreasetrend(number) {
-    let elementId = "trend" + number;
-    let element = $('#' + elementId);
-    let currentValue = parseInt(element.val());
+function decreasetrend(id) {
+    let element = $('#' + id);
+    let currentValue = parseInt(element.val(), 10);
     if (currentValue > 0) {
         element.val(currentValue - 1);
+        localStorage.setItem(id, element.val());
     }
-    saveValue(elementId);
 }
 
-function clearResulttrend(number) {
-    let elementId = "trend" + number;
-    $('#' + elementId).val('0');
-    saveValue(elementId);
+function clearResulttrend(id) {
+    $('#' + id).val('0');
+    localStorage.setItem(id, '0');
 }
+

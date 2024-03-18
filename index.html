@@ -139,6 +139,22 @@
       <button onclick="increasetrend('trend10')">+</button><br>
       <button onclick="clearResulttrend('trend10')" class="reset-button">RESET</button><br>
     </div>
+
+    <div id="counter11">
+      <input type="text" id="trendadi11" name="trendadi11" value="TREND&KUMAŞ" class="input-number"><br>
+      <button onclick="decreasetrend('trend11')">-</button>
+      <input class="input-number" id="trend11" type="number" value="0" min="0" max="10000">
+      <button onclick="increasetrend('trend11')">+</button><br>
+      <button onclick="clearResulttrend('trend11')" class="reset-button">RESET</button><br>
+    </div>
+
+    <div id="counter12">
+      <input type="text" id="trendadi12" name="trendadi12" value="TREND&KUMAŞ" class="input-number"><br>
+      <button onclick="decreasetrend('trend12')">-</button>
+      <input class="input-number" id="trend12" type="number" value="0" min="0" max="10000">
+      <button onclick="increasetrend('trend12')">+</button><br>
+      <button onclick="clearResulttrend('trend12')" class="reset-button">RESET</button><br>
+    </div>
     
     <p width="188" height="13" style="color:black;">Developed by Mehmet TÜRKMEN</p>
     <a href="https://www.linkedin.com/in/mehmet-t%C3%BCrkmen1/" class="fa fa-linkedin"></a>
@@ -151,7 +167,7 @@
 
     $(document).ready(function () {
     // Initialize counter values and text inputs from localStorage
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 12; i++) {
         let counterValue = localStorage.getItem('trend' + i);
         let textValue = localStorage.getItem('trendadi' + i);
 

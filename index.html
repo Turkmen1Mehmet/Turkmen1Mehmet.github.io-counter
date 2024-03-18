@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content= "width=device-width, user-scalable=no, initial-scale=0.4"/>
+  <meta name="description" content="Online counter"/>
+  <meta name="author" content="Memoli"/>
+  <style>
+    button {
+      touch-action: manipulation;
+    }
+  </style>
+  <title>Online counter</title>
+  <style>
+  body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
+  </style>
+  </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+
+  .fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+</style>
+
+</head>
+
+<body>
+<center>
+<button onclick="darkFunction()">Dark Mode</button><br>
+<input type="text" id="trendadi1" name="trendadi1" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend1()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend1" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend1()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend1()" style="font-size: 50px;text-align:center;">RESET</button><br>
+
+<input type="text" id="trendadi2" name="trendadi2" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend2()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend2" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend2()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend2()" style="font-size: 50px;text-align:center;">RESET</button><br>
+
+<input type="text" id="trendadi3" name="trendadi3" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend3()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend3" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend3()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend3()" style="font-size: 50px;text-align:center;">RESET</button><br>
+
+<input type="text" id="trendadi4" name="trendadi4" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend4()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend4" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend4()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend4()" style="font-size: 50px;text-align:center;">RESET</button><br>
+
+<input type="text" id="trendadi5" name="trendadi5" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend5()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend5" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend5()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend5()" style="font-size: 50px;text-align:center;">RESET</button><br>
+
+<input type="text" id="trendadi6" name="trendadi6" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend6()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend6" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend6()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend6()" style="font-size: 50px;text-align:center;">RESET</button><br>
+  
+<input type="text" id="trendadi7" name="trendadi7" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend7()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend7" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend7()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend7()" style="font-size: 50px;text-align:center;">RESET</button><br>
+  
+<input type="text" id="trendadi8" name="trendadi8" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend8()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend8" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend8()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend8()" style="font-size: 50px;text-align:center;">RESET</button><br>
+  
+<input type="text" id="trendadi9" name="trendadi9" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend9()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend9" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend9()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend9()" style="font-size: 50px;text-align:center;">RESET</button><br>
+  
+<input type="text" id="trendadi10" name="trendadi10" value="TREND&KUMAŞ" style="font-size: 80px;text-align:center;"><br>
+<button onclick="decreasetrend10()" style="font-size: 80px;text-align:center;height:90px;width:90px">-</button>
+<input class="input-number" id="trend10" type="number" value="0" min="0" max="10000" style="font-size: 80px;text-align:center;">
+
+<button onclick="increasetrend10()" style="font-size: 80px;text-align:center;height:90px;width:90px">+</button><br>
+<button onclick="clearResulttrend10()" style="font-size: 50px;text-align:center;">RESET</button><br>
+  
+<p width="188" height="13" style="color:black;">Developed by Mehmet TÜRKMEN</p>
+
+<a href="https://www.linkedin.com/in/mehmet-t%C3%BCrkmen1/" class="fa fa-linkedin"></a>
+
+</center>
+<script>
+function darkFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
+</script>
+<script>
+function increasetrend1() {
+  document.getElementById("trend1").stepUp();
+}
+</script>
+<script>
+function decreasetrend1() {
+  document.getElementById("trend1").stepDown();
+}
+</script>
+<script>
+function clearResulttrend1(){
+  document.getElementById("trend1").value = '0'
+}
+</script>
+
+<script>
+  function increasetrend2() {
+    document.getElementById("trend2").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend2() {
+    document.getElementById("trend2").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend2(){
+    document.getElementById("trend2").value = '0'
+  }
+  </script>
+
+<script>
+  function increasetrend3() {
+    document.getElementById("trend3").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend3() {
+    document.getElementById("trend3").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend3(){
+    document.getElementById("trend3").value = '0'
+  }
+  </script>
+
+<script>
+  function increasetrend4() {
+    document.getElementById("trend4").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend4() {
+    document.getElementById("trend4").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend4(){
+    document.getElementById("trend4").value = '0'
+  }
+  </script>
+
+<script>
+  function increasetrend5() {
+    document.getElementById("trend5").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend5() {
+    document.getElementById("trend5").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend5(){
+    document.getElementById("trend5").value = '0'
+  }
+  </script>
+
+<script>
+  function increasetrend6() {
+    document.getElementById("trend6").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend6() {
+    document.getElementById("trend6").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend6(){
+    document.getElementById("trend6").value = '0'
+  }
+  </script>
+  <script>
+  function increasetrend7() {
+    document.getElementById("trend7").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend7() {
+    document.getElementById("trend7").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend7(){
+    document.getElementById("trend7").value = '0'
+  }
+  </script>
+  <script>
+  function increasetrend8() {
+    document.getElementById("trend8").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend8() {
+    document.getElementById("trend8").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend8(){
+    document.getElementById("trend8").value = '0'
+  }
+  </script>
+  <script>
+  function increasetrend9() {
+    document.getElementById("trend9").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend9() {
+    document.getElementById("trend9").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend9(){
+    document.getElementById("trend9").value = '0'
+  }
+  </script>
+  <script>
+  function increasetrend10() {
+    document.getElementById("trend10").stepUp();
+  }
+  </script>
+  <script>
+  function decreasetrend10() {
+    document.getElementById("trend10").stepDown();
+  }
+  </script>
+  <script>
+  function clearResulttrend10(){
+    document.getElementById("trend10").value = '0'
+  }
+  </script>
+
+</body>
+</html>

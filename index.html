@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.4"/>
   <meta name="description" content="Online counter"/>
   <meta name="author" content="Memoli"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Online counter</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -60,9 +61,9 @@
     <!-- Repeat this block for each counter -->
     <div id="counter1">
       <input type="text" id="trendadi1" name="trendadi1" value="TREND&KUMAŞ" class="input-number"><br>
-      <button onclick="increasetrend('trend1')">+</button>
-      <input class="input-number" id="trend1" type="number" value="0" min="0" max="10000">
       <button onclick="decreasetrend('trend1')">-</button><br>
+      <input class="input-number" id="trend1" type="number" value="0" min="0" max="10000">
+      <button onclick="increasetrend('trend1')">+</button>
       <button onclick="clearResulttrend('trend1')" class="reset-button">RESET</button>
     </div>
     <!-- Duplicate the above block for counters 2 to 10, updating IDs accordingly -->

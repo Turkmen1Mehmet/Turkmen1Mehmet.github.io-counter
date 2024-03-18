@@ -150,8 +150,8 @@
     }
 
     $(document).ready(function () {
-      // Initialize counter values and text inputs from localStorage
-      for (let i = 1; i <= 10; i++) {
+    // Initialize counter values and text inputs from localStorage
+    for (let i = 1; i <= 10; i++) {
         let counterValue = localStorage.getItem('trend' + i);
         let textValue = localStorage.getItem('trendadi' + i);
 
@@ -160,13 +160,14 @@
         }
         
         $('#trendadi' + i).val(textValue ? textValue : 'TREND&KUMAŞ');
-      }
+    }
 
-      $('input[type="text"]').change(function () {
-          let id = $(this).attr('id');
-          let value = $(this).val();
-          localStorage.setItem(id, value);
-      });
+    // Save text inputs to localStorage on change
+    $('input[type="text"]').change(function () {
+        let id = $(this).attr('id');
+        let value = $(this).val();
+        localStorage.setItem(id, value);
+    });
 
 
     function increasetrend(id) {
@@ -189,20 +190,20 @@
       localStorage.setItem(id, '0');
     }
 
-    // Bind buttons to functions
-      $("[id^='counter']").each(function() {
-        var id = $(this).find('.input-number').attr('id').replace('trend', '');
-        $(this).find("[onclick^='increasetrend']").click(function() {
-          increasetrend('trend' + id);
+    // Bind events dynamically
+    $("[id^='counter']").each(function() {
+        var idSuffix = $(this).find('.input-number[type="number"]').attr('id').match(/\d+/)[0];
+        $(this).find("[onclick*='increasetrend']").off('click').on('click', function() {
+          increasetrend('trend' + idSuffix);
         });
-        $(this).find("[onclick^='decreasetrend']").click(function() {
-          decreasetrend('trend' + id);
+        $(this).find("[onclick*='decreasetrend']").off('click').on('click', function() {
+          decreasetrend('trend' + idSuffix);
         });
-        $(this).find("[onclick^='clearResulttrend']").click(function() {
-          clearResulttrend('trend' + id);
+        $(this).find("[onclick*='clearResulttrend']").off('click').on('click', function() {
+          clearResulttrend('trend' + idSuffix);
         });
-      });
     });
+});
   </script>
 </body>
 </html>

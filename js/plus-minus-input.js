@@ -1,6 +1,14 @@
-window.jQuery(document).ready(function (_jquery) {
-    const $ = _jquery;
+$(document).ready(function ($) {
 
+    // Sayfa yüklendiğinde localStorage'dan verileri yükleyin
+    for (let i = 1; i <= 10; i++) {
+        let storedValue = localStorage.getItem('trend' + i);
+        if (storedValue) {
+            $('#trend' + i).val(storedValue);
+        }
+    }
+
+    // Artırma ve azaltma butonlarına tıklandığında ilgili işlevleri çağır
     $('[data-quantity="plus"]').click((event) => {
         increaseCounter(event);
     });
@@ -9,107 +17,77 @@ window.jQuery(document).ready(function (_jquery) {
         decreaseCounter(event);
     });
 
-    $('#delete_02').click(function (a) {
-        a.preventDefault();
-
+    // Silme işlemi
+    $('#delete_02').click(function (event) {
+        event.preventDefault();
         ["#delete_00", "#delete_01", "#delete_02", "#delete_03", "#delete_04"].forEach(function (id) {
             $(id).remove();
         });
-
         $("#counter").addClass("centered");
     });
 
+    // Klavye olayları
     $(document).on('keyup', (event) => {
-        if (
-            event &&
-            event.currentTarget &&
-            event.currentTarget.activeElement &&
-            event.currentTarget.activeElement.id === "input-group-field"
-        ) {
-            // We don't want to trigger a decrease/increase twice.
-            // Default input element (type="number") has a built-in handler for "ArrowUp" and "ArrowDown" keyboard events.
-            // That's why we skip processing keyboard events if the user is inside (has focused) the input element.
-            return;
-        }
-
-        if (event.key === "ArrowUp") {
-            increaseCounter(event);
-        } else if (event.key === "ArrowDown") {
-            decreaseCounter(event);
+        if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+            // İlgili input'a odaklanmışsa işlem yapma
+            if (event.currentTarget.activeElement && $(event.currentTarget.activeElement).hasClass('input-number')) {
+                return;
+            }
+            if (event.key === "ArrowUp") {
+                increaseCounter(event);
+            } else if (event.key === "ArrowDown") {
+                decreaseCounter(event);
+            }
         }
     });
 
     function increaseCounter(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        if ($(event.target).hasClass("button hollow circle dokuma")) {
-            const el = $("input[name=quantitydokuma]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        } else if ($(event.target).hasClass("button hollow circle orme")) {
-            const el = $("input[name=quantityorme]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        } else if ($(event.target).hasClass("button hollow circle denim")) {
-            const el = $("input[name=quantitydenim]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        } else if ($(event.target).hasClass("button hollow circle triko")) {
-            const el = $("input[name=quantitytriko]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        } else if ($(event.target).hasClass("button hollow circle pu")) {
-            const el = $("input[name=quantitypu]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        } else if ($(event.target).hasClass("button hollow circle brode")) {
-            const el = $("input[name=quantitybrode]");
-            const oldValue = parseInt(el.val());
-
-            isNaN(oldValue) ? el.val(0) : el.val(oldValue + 1);
-        }
+        handleCounterChange(event, 1);
     }
 
     function decreaseCounter(event) {
+        handleCounterChange(event, -1);
+    }
+
+    function handleCounterChange(event, change) {
         event.preventDefault();
-        event.stopPropagation();
+        let button = $(event.target).closest('.button');
+        let targetInputSelector = button.data('target');
+        let input = $(targetInputSelector);
+        let currentValue = parseInt(input.val()) || 0;
+        let newValue = currentValue + change;
 
-        if ($(event.target).hasClass("button hollow circle dokuma")) {
-            const el = $("input[name=quantitydokuma]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
-        } else if ($(event.target).hasClass("button hollow circle orme")) {
-            const el = $("input[name=quantityorme]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
-        } else if ($(event.target).hasClass("button hollow circle denim")) {
-            const el = $("input[name=quantitydenim]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
-        } else if ($(event.target).hasClass("button hollow circle triko")) {
-            const el = $("input[name=quantitytriko]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
-        } else if ($(event.target).hasClass("button hollow circle pu")) {
-            const el = $("input[name=quantitypu]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
-        } else if ($(event.target).hasClass("button hollow circle brode")) {
-            const el = $("input[name=quantitybrode]");
-            const oldValue = parseInt(el.val());
-
-            (!isNaN(oldValue) && oldValue > 0) ? el.val(oldValue - 1) : el.val(0);
+        if (newValue >= 0) {
+            input.val(newValue);
+            localStorage.setItem(input.attr('id'), newValue.toString());
         }
     }
 });
+
+function saveValue(id) {
+    let value = $('#' + id).val();
+    localStorage.setItem(id, value);
+}
+
+function increasetrend(number) {
+    let elementId = "trend" + number;
+    let element = $('#' + elementId);
+    element.val(parseInt(element.val()) + 1);
+    saveValue(elementId);
+}
+
+function decreasetrend(number) {
+    let elementId = "trend" + number;
+    let element = $('#' + elementId);
+    let currentValue = parseInt(element.val());
+    if (currentValue > 0) {
+        element.val(currentValue - 1);
+    }
+    saveValue(elementId);
+}
+
+function clearResulttrend(number) {
+    let elementId = "trend" + number;
+    $('#' + elementId).val('0');
+    saveValue(elementId);
+}

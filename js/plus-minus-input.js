@@ -1,7 +1,7 @@
 $(document).ready(function ($) {
 
     // Sayfa yüklendiğinde localStorage'dan verileri yükleyin
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 12; i++) {
         let storedValue = localStorage.getItem('trend' + i);
         if (storedValue) {
             $('#trend' + i).val(storedValue);
